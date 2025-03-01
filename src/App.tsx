@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Plus, Database, ArrowLeft, ArrowRight } from 'lucide-react';
+import axios from 'axios';
 
 // Define token type
 interface Token {
@@ -13,6 +14,8 @@ interface Token {
   supplyPercentAdded: number;
   timestamp: string;
 }
+
+const API_URL = 'http://localhost:3001/api';
 
 function App() {
   const [activeTab, setActiveTab] = useState<'list' | 'add'>('list');
@@ -30,12 +33,18 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const tokensPerPage = 5;
 
-  // Mock data for demonstration
+  // Fetch tokens from backend
   useEffect(() => {
-    const mockTokens: Token[] = [
-      
-    ];
-    setTokens(mockTokens);
+    const fetchTokens = async () => {
+      try {
+        const response = await axios.get<Token[]>(`${API_URL}/tokens`);
+        setTokens(response.data);
+      } catch (error) {
+        console.error('Error fetching tokens:', error);
+      }
+    };
+
+    fetchTokens();
   }, []);
 
   // Filter tokens based on search term
@@ -66,28 +75,29 @@ function App() {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newTokenEntry: Token = {
-      id: tokens.length + 1,
-      ...newToken,
-      timestamp: new Date().toISOString(),
-    };
-    setTokens([...tokens, newTokenEntry]);
-    
-    // Reset form
-    setNewToken({
-      owner: '',
-      balance: 0,
-      fundingSource: '',
-      tokenName: '',
-      fee: 0,
-      liquidity: 0,
-      supplyPercentAdded: 0,
-    });
-    
-    // Switch to list view
-    setActiveTab('list');
+    try {
+      const response = await axios.post<Token>(`${API_URL}/tokens`, newToken);
+      setTokens([...tokens, response.data]);
+      
+      // Reset form
+      setNewToken({
+        owner: '',
+        balance: 0,
+        fundingSource: '',
+        tokenName: '',
+        fee: 0,
+        liquidity: 0,
+        supplyPercentAdded: 0,
+      });
+      
+      // Switch to list view
+      setActiveTab('list');
+    } catch (error) {
+      console.error('Error adding token:', error);
+      alert('Failed to add token. Please try again.');
+    }
   };
 
   return (
