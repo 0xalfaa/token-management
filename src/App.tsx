@@ -33,72 +33,7 @@ function App() {
   // Mock data for demonstration
   useEffect(() => {
     const mockTokens: Token[] = [
-      {
-        id: 1,
-        owner: 'John Doe',
-        balance: 1000,
-        fundingSource: 'Personal',
-        tokenName: 'JDToken',
-        fee: 0.5,
-        liquidity: 5000,
-        supplyPercentAdded: 2.5,
-        timestamp: '2023-10-15T14:30:00',
-      },
-      {
-        id: 2,
-        owner: 'Alice Smith',
-        balance: 2500,
-        fundingSource: 'Venture Capital',
-        tokenName: 'ASToken',
-        fee: 0.3,
-        liquidity: 12000,
-        supplyPercentAdded: 5.0,
-        timestamp: '2023-10-16T09:45:00',
-      },
-      {
-        id: 3,
-        owner: 'Robert Johnson',
-        balance: 750,
-        fundingSource: 'Corporate',
-        tokenName: 'RJToken',
-        fee: 0.7,
-        liquidity: 3000,
-        supplyPercentAdded: 1.8,
-        timestamp: '2023-10-17T11:20:00',
-      },
-      {
-        id: 4,
-        owner: 'Emily Davis',
-        balance: 3200,
-        fundingSource: 'Angel Investor',
-        tokenName: 'EDToken',
-        fee: 0.4,
-        liquidity: 8500,
-        supplyPercentAdded: 3.2,
-        timestamp: '2023-10-18T16:15:00',
-      },
-      {
-        id: 5,
-        owner: 'Michael Wilson',
-        balance: 1800,
-        fundingSource: 'Personal',
-        tokenName: 'MWToken',
-        fee: 0.6,
-        liquidity: 4200,
-        supplyPercentAdded: 2.1,
-        timestamp: '2023-10-19T10:30:00',
-      },
-      {
-        id: 6,
-        owner: 'Sarah Brown',
-        balance: 4500,
-        fundingSource: 'Venture Capital',
-        tokenName: 'SBToken',
-        fee: 0.2,
-        liquidity: 15000,
-        supplyPercentAdded: 6.5,
-        timestamp: '2023-10-20T13:45:00',
-      },
+      
     ];
     setTokens(mockTokens);
   }, []);
