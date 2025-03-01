@@ -307,133 +307,162 @@ function App() {
               )}
             </div>
           ) : (
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-xl font-semibold text-gray-800 mb-6">Tambah Data Token</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  <div>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-8 text-center">
+                Tambah Data Token Baru
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                  <div className="space-y-2">
                     <label htmlFor="owner" className="block text-sm font-medium text-gray-700">
-                      Owner
+                      Nama Pemilik Token
                     </label>
                     <input
                       type="text"
                       name="owner"
                       id="owner"
                       required
+                      placeholder="Masukkan nama pemilik token"
                       value={newToken.owner}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-base"
                     />
                   </div>
 
-                  <div>
+                  <div className="space-y-2">
                     <label htmlFor="tokenName" className="block text-sm font-medium text-gray-700">
-                      Token Name
+                      Nama Token
                     </label>
                     <input
                       type="text"
                       name="tokenName"
                       id="tokenName"
                       required
+                      placeholder="Masukkan nama token"
                       value={newToken.tokenName}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-base"
                     />
                   </div>
 
-                  <div>
+                  <div className="space-y-2">
                     <label htmlFor="balance" className="block text-sm font-medium text-gray-700">
-                      Balance
+                      Saldo Token
                     </label>
-                    <input
-                      type="number"
-                      name="balance"
-                      id="balance"
-                      required
-                      min="0"
-                      value={newToken.balance}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name="balance"
+                        id="balance"
+                        required
+                        min="0"
+                        placeholder="0.00"
+                        value={newToken.balance}
+                        onChange={handleInputChange}
+                        className="mt-1 block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-base"
+                      />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
+                        tokens
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
+                  <div className="space-y-2">
                     <label htmlFor="fundingSource" className="block text-sm font-medium text-gray-700">
-                      Funding Source
+                      Sumber Dana
                     </label>
                     <input
                       type="text"
                       name="fundingSource"
                       id="fundingSource"
                       required
+                      placeholder="Masukkan sumber dana"
                       value={newToken.fundingSource}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-base"
                     />
                   </div>
 
-                  <div>
+                  <div className="space-y-2">
                     <label htmlFor="fee" className="block text-sm font-medium text-gray-700">
-                      Fee (%)
+                      Biaya (%)
                     </label>
-                    <input
-                      type="number"
-                      name="fee"
-                      id="fee"
-                      required
-                      min="0"
-                      step="0.01"
-                      value={newToken.fee}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name="fee"
+                        id="fee"
+                        required
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                        value={newToken.fee}
+                        onChange={handleInputChange}
+                        className="mt-1 block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-base"
+                      />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
+                        %
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
+                  <div className="space-y-2">
                     <label htmlFor="liquidity" className="block text-sm font-medium text-gray-700">
-                      Liquidity
+                      Likuiditas
                     </label>
-                    <input
-                      type="number"
-                      name="liquidity"
-                      id="liquidity"
-                      required
-                      min="0"
-                      value={newToken.liquidity}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name="liquidity"
+                        id="liquidity"
+                        required
+                        min="0"
+                        placeholder="0.00"
+                        value={newToken.liquidity}
+                        onChange={handleInputChange}
+                        className="mt-1 block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-base"
+                      />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
+                        tokens
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
+                  <div className="space-y-2">
                     <label htmlFor="supplyPercentAdded" className="block text-sm font-medium text-gray-700">
-                      Supply % Added
+                      Persentase Supply Ditambahkan
                     </label>
-                    <input
-                      type="number"
-                      name="supplyPercentAdded"
-                      id="supplyPercentAdded"
-                      required
-                      min="0"
-                      step="0.01"
-                      value={newToken.supplyPercentAdded}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name="supplyPercentAdded"
+                        id="supplyPercentAdded"
+                        required
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                        value={newToken.supplyPercentAdded}
+                        onChange={handleInputChange}
+                        className="mt-1 block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-base"
+                      />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
+                        %
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex justify-end space-x-3">
+                <div className="flex justify-end space-x-4 pt-6">
                   <button
                     type="button"
                     onClick={() => setActiveTab('list')}
-                    className="inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="px-6 py-3 text-base font-medium rounded-lg border border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200"
                   >
                     Batal
                   </button>
                   <button
                     type="submit"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="px-6 py-3 text-base font-medium rounded-lg border border-transparent bg-indigo-600 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200"
                   >
                     Tambah Token
                   </button>
